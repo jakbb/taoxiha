@@ -1,0 +1,1 @@
+package com.taoxiha.service.constant;public interface ICrawlConstant {		/**数据源 | IP代理 启用**/	public static final Integer STATUS_ON=1;	/**数据源 | IP代理 关闭**/	public static final Integer STATUS_OFF=0;	}

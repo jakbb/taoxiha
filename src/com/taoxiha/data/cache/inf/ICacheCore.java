@@ -1,0 +1,1 @@
+package com.taoxiha.data.cache.inf;import org.springframework.beans.factory.annotation.Autowired;import com.taoxiha.base.dao.ResourceConfDao;public interface ICacheCore {	//	public ResourceConf get	}

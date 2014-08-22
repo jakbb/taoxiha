@@ -1,0 +1,1 @@
+package test.parser.html.jsoup.test;import java.util.HashMap;import java.util.Map;public class AppTest {		private static Map<String,Integer> itemMap = new HashMap<String,Integer>();		private static final String crawlUrl="";		}

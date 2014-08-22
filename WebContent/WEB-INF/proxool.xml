@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<something-else-entirely>
+<proxool>
+    <alias>taoxiha</alias>
+     
+    <driver-url>jdbc:mysql://127.0.0.1:8889/taoxiha?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8</driver-url>
+    <driver-class>com.mysql.jdbc.Driver</driver-class>
+    <driver-properties>
+        <property name="user" value="root" />
+        <property name="password" value="zhang" />
+    </driver-properties>
+    <minimum-connection-count>5</minimum-connection-count>
+    <maximum-connection-count>100</maximum-connection-count>
+    <maximum-connection-lifetime>1800000</maximum-connection-lifetime>
+    <house-keeping-sleep-time>40000</house-keeping-sleep-time>
+    <maximum-active-time>1200000</maximum-active-time>
+    <simultaneous-build-throttle>50</simultaneous-build-throttle>
+    <house-keeping-test-sql>select CURRENT_DATE</house-keeping-test-sql>
+    <statistics>1m,15m,1d</statistics>
+    <statistics-log-level>INFO</statistics-log-level>
+    <fatal-sql-exception>Connection is closed,SQLSTATE=08003,Error opening socket. SQLSTATE=08S01,SQLSTATE=08S01</fatal-sql-exception>
+    <fatal-sql-exception-wrapper-class>org.logicalcobwebs.proxool.FatalRuntimeException</fatal-sql-exception-wrapper-class>
+    <verbose>false</verbose>
+</proxool>
+
+
+<!-- 
+
+<proxool>
+    <alias>readonly_taoxiha</alias>
+     
+    <driver-url>jdbc:mysql://taoxiha.db.test:3308/taoxiha?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8</driver-url>
+    <driver-class>com.mysql.jdbc.Driver</driver-class>
+    <driver-properties>
+        <property name="user" value="root" />
+        <property name="password" value="taoxiha" />
+    </driver-properties>
+    <minimum-connection-count>5</minimum-connection-count>
+    <maximum-connection-count>100</maximum-connection-count>
+    <maximum-connection-lifetime>1800000</maximum-connection-lifetime>
+    <house-keeping-sleep-time>40000</house-keeping-sleep-time>
+    <maximum-active-time>1200000</maximum-active-time>
+    <simultaneous-build-throttle>50</simultaneous-build-throttle>
+    <house-keeping-test-sql>select CURRENT_DATE</house-keeping-test-sql>
+    <statistics>1m,15m,1d</statistics>
+    <statistics-log-level>INFO</statistics-log-level>
+    <fatal-sql-exception>Connection is closed,SQLSTATE=08003,Error opening socket. SQLSTATE=08S01,SQLSTATE=08S01</fatal-sql-exception>
+    <fatal-sql-exception-wrapper-class>org.logicalcobwebs.proxool.FatalRuntimeException</fatal-sql-exception-wrapper-class>
+    <verbose>false</verbose>
+</proxool>
+ -->
+
+</something-else-entirely>

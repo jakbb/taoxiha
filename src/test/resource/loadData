@@ -1,0 +1,1 @@
+/Applications/MAMP/Library/bin/mysql -P8889 -uroot -pzhang <<EOFuse taoxiha; LOAD DATA LOCAL INFILE '/data/crawl/taoxiha/task/20131016/task006-001' INTO TABLE log_crawl_baidu_app FIELDS TERMINATED BY '|';quitEOF

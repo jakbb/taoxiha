@@ -1,0 +1,1 @@
+tbname='log_crawl_baidu_app'result=`/Applications/MAMP/Library/bin/mysql -P8889 -uroot -hlocalhost -pzhang <<EOFuse taoxiha;SHOW TABLES LIKE '%$tbname';EOF`result=`echo $result | awk '{print $3}'`echo $resultif [ "$result" != "$tbname" ]  thenecho 'success'elseecho 'exist the table 'fi

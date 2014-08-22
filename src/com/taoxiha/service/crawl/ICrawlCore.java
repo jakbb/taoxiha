@@ -1,0 +1,1 @@
+package com.taoxiha.service.crawl;import java.util.List;import com.taoxiha.service.crawl.entity.CrawlParams;public interface ICrawlCore {			}

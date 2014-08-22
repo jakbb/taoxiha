@@ -1,0 +1,1 @@
+package com.taoxiha.service.crawl.entity;public enum MetaDataValueType {	text, attr, val, html, array}

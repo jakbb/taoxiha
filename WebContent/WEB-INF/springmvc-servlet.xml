@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+    default-autowire="byName" >
+
+	<!-- 开启支持@NumberFormat @DateTimeFormat @Valid标注 ,@DateTimeFormat用于bean 日期属性的格式化,请查看: http://static.springsource.org/spring/docs/3.0.2.RELEASE/spring-framework-reference/htmlsingle/spring-framework-reference.html#mvc-config-->
+   <!--   <mvc:annotation-driven validator="validator"></mvc:annotation-driven> -->
+   
+	<context:component-scan base-package="com.taoxiha"/>
+	
+	<!-- 
+	 <mvc:resources mapping="/resources/**" location="/resources/" /> 
+	<mvc:default-servlet-handler/>
+	 --> 
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    <!-- 解决 @ResponseBody 返回值乱码问题  -->
+    <property name="messageConverters">   
+         <list>   
+             <bean class ="org.springframework.http.converter.StringHttpMessageConverter">   
+                <property name = "supportedMediaTypes">
+                      <list>
+                          <value>text/html;charset=UTF-8</value>   
+                     </list>   
+                </property>   
+             </bean>   
+         </list>   
+   </property>
+    </bean>
+ 
+	
+     <!-- 
+      根据客户端的不同的请求决定不同的view进行响应, 如 /blog/1.json /blog/1.xml 
+      -->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+			    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			        <property name="prefix" value="/pages/"/>
+                    <property name="suffix" value=".jsp"/>
+	            </bean>
+			</list>
+		</property>
+    </bean>
+	
+	 
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	
+				<!-- 定义默认的异常处理页面，当该异常类型的注册时使用 	-->
+			<property name="defaultErrorView" value="error/default"></property>
+		
+		<!-- 定义需要特殊处理的异常，用类名或完全路径名作为key，异常页名作为值 -->
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.anzhi.pay.ucenter.exception.UserServiceException">error/api</prop>
+				<prop key="java.sql.SQLException">error/system</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<mvc:interceptors>
+		<mvc:interceptor >
+			<mvc:mapping path="/**"/>
+			<bean class="com.taoxiha.base.filter.LogFilter"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+</beans>
